@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: istio2
+  labels:
+    app: istio2
+    version: v1
+spec:
+  selector:
+    matchLabels:
+      app: istio2
+      version: v1
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: istio2
+        version: v1
+    spec:
+      containers:
+        - name: master
+          image: istio2
+          imagePullPolicy: IfNotPresent
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+          ports:
+            - containerPort: 8081
